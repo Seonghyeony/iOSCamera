@@ -10,6 +10,7 @@
 import UIKit
 
 class ViewController: UIViewController {
+    let cameraController = CameraController()
     
     @IBOutlet fileprivate var captureButton: UIButton!
     
@@ -29,6 +30,16 @@ class ViewController: UIViewController {
 
 extension ViewController {
     override func viewDidLoad() {
+        // CameraController 연결
+        func configureCameraController() {
+            self.cameraController.prepare {(error) in
+                if let error = error {
+                    print(error)
+                }
+                
+                try? self.cameraController.displayPreview(on: self.capturePreviewView)
+            }
+        }
         
         func styleCaptureButton() {
             captureButton.layer.borderColor = UIColor.black.cgColor
@@ -37,8 +48,8 @@ extension ViewController {
             captureButton.layer.cornerRadius = min(captureButton.frame.width, captureButton.frame.height) / 2
         }
         
+        configureCameraController()
         styleCaptureButton()
-
     }
 }
 
