@@ -10,9 +10,10 @@
 		CB9BF71324E12B2F00F35713 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9BF71224E12B2F00F35713 /* AppDelegate.swift */; };
 		CB9BF71524E12B2F00F35713 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9BF71424E12B2F00F35713 /* SceneDelegate.swift */; };
 		CB9BF71724E12B2F00F35713 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9BF71624E12B2F00F35713 /* ViewController.swift */; };
-		CB9BF71A24E12B2F00F35713 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB9BF71824E12B2F00F35713 /* Main.storyboard */; };
 		CB9BF71C24E12B3300F35713 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB9BF71B24E12B3300F35713 /* Assets.xcassets */; };
 		CB9BF71F24E12B3300F35713 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB9BF71D24E12B3300F35713 /* LaunchScreen.storyboard */; };
+		CB9BF72724E12BB400F35713 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB9BF72624E12BB300F35713 /* Main.storyboard */; };
+		CB9BF72924E12BFC00F35713 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9BF72824E12BFC00F35713 /* CameraController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,10 +21,11 @@
 		CB9BF71224E12B2F00F35713 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB9BF71424E12B2F00F35713 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CB9BF71624E12B2F00F35713 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		CB9BF71924E12B2F00F35713 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CB9BF71B24E12B3300F35713 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB9BF71E24E12B3300F35713 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CB9BF72024E12B3300F35713 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB9BF72624E12BB300F35713 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		CB9BF72824E12BFC00F35713 /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +60,9 @@
 			children = (
 				CB9BF71224E12B2F00F35713 /* AppDelegate.swift */,
 				CB9BF71424E12B2F00F35713 /* SceneDelegate.swift */,
+				CB9BF72824E12BFC00F35713 /* CameraController.swift */,
 				CB9BF71624E12B2F00F35713 /* ViewController.swift */,
-				CB9BF71824E12B2F00F35713 /* Main.storyboard */,
+				CB9BF72624E12BB300F35713 /* Main.storyboard */,
 				CB9BF71B24E12B3300F35713 /* Assets.xcassets */,
 				CB9BF71D24E12B3300F35713 /* LaunchScreen.storyboard */,
 				CB9BF72024E12B3300F35713 /* Info.plist */,
@@ -127,7 +130,7 @@
 			files = (
 				CB9BF71F24E12B3300F35713 /* LaunchScreen.storyboard in Resources */,
 				CB9BF71C24E12B3300F35713 /* Assets.xcassets in Resources */,
-				CB9BF71A24E12B2F00F35713 /* Main.storyboard in Resources */,
+				CB9BF72724E12BB400F35713 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +143,7 @@
 			files = (
 				CB9BF71724E12B2F00F35713 /* ViewController.swift in Sources */,
 				CB9BF71324E12B2F00F35713 /* AppDelegate.swift in Sources */,
+				CB9BF72924E12BFC00F35713 /* CameraController.swift in Sources */,
 				CB9BF71524E12B2F00F35713 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,14 +151,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		CB9BF71824E12B2F00F35713 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CB9BF71924E12B2F00F35713 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		CB9BF71D24E12B3300F35713 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
