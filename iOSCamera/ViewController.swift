@@ -51,5 +51,34 @@ extension ViewController {
         configureCameraController()
         styleCaptureButton()
     }
+    
+    // 플래시 토글 기능
+    @IBAction func toggleFlash(_ sender: UIButton) {
+        if cameraController.flashMode == .on {
+            cameraController.flashMode = .off
+            toggleFlashButton.setImage(#imageLiteral(resourceName: "Flash Off Icon"), for: .normal)
+        } else {
+            cameraController.flashMode = .on
+            toggleFlashButton.setImage(#imageLiteral(resourceName: "Flash On Icon"), for: .normal)
+        }
+    }
+    
+    // 카메라 전환 기능
+    @IBAction func switchCameras(_ sender: UIButton) {
+        do {
+            try cameraController.switchCameras()
+        } catch {
+            print(error)
+        }
+        
+        switch cameraController.currentCameraPosition {
+        case .some(.front):
+            toggleCameraButton.setImage(#imageLiteral(resourceName: "Front Camera Icon"), for: .normal)
+        case .some(.rear):
+            toggleCameraButton.setImage(#imageLiteral(resourceName: "Rear Camera Icon"), for: .normal)
+        case .none:
+            return
+        }
+    }
 }
 
