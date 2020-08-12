@@ -9,7 +9,7 @@
 import AVFoundation
 import UIKit
 
-class CameraController {
+class CameraController: NSObject {
     // AVCaptureSession 생성
     var captureSession: AVCaptureSession?
     
@@ -32,6 +32,10 @@ class CameraController {
     
     // 플래시 기능
     var flashMode = AVCaptureDevice.FlashMode.off
+    
+    // 사진 찍기 기능에 필요한 변수들.
+    var photoCaptureCompletionBlock: ((UIImage?, Error?) -> Void)?
+    
     
     public enum CameraPosition {
         case front
@@ -224,4 +228,40 @@ class CameraController {
         // 설정 후 captureSession 저장
         captureSesseion.commitConfiguration()
     }
+    
+    // 우리가 구축한 CameraController를 사용하여 이미지를 캡쳐
+    func captureImage(completion: @escaping (UIImage?, Error?) -> Void) {
+        guard let captureSession = captureSession, captureSession.isRunning else {
+            completion(nil, CameraControllerError.captureSessionIsMissing)
+            return
+        }
+        
+        let settings = AVCapturePhotoSettings()
+        settings.flashMode = self.flashMode
+        
+        self.photoOutput?.capturePhoto(with: settings, delegate: self)
+        self.photoCaptureCompletionBlock = completion
+    }
 }
+
+// CameraController가 AVCapturePhotoCaptureDelegate를 준수하도록 확장.
+extension CameraController: AVCapturePhotoCaptureDelegate {
+    public func photoOutput(_ captureOutput: AVCapturePhotoOutput, didFinishProcessingPhoto photoSampleBuffer: CMSampleBuffer?, previewPhoto previewPhotoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Swift.Error?) {
+        
+        if let error = error {
+            self.photoCaptureCompletionBlock?(nil, error)
+        } else if let buffer = photoSampleBuffer, let data = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: buffer, previewPhotoSampleBuffer: nil), let image = UIImage(data: data) {
+            self.photoCaptureCompletionBlock?(image, nil)
+        } else {
+            self.photoCaptureCompletionBlock?(nil, CameraControllerError.unknown)
+        }
+    }
+}
+
+
+
+
+
+
+
+

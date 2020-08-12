@@ -8,6 +8,7 @@
 
 
 import UIKit
+import Photos
 
 class ViewController: UIViewController {
     let cameraController = CameraController()
@@ -78,6 +79,21 @@ extension ViewController {
             toggleCameraButton.setImage(#imageLiteral(resourceName: "Rear Camera Icon"), for: .normal)
         case .none:
             return
+        }
+    }
+    
+    // CameraController의 captureImage 메소드를 호출하여 사진을 찍은 다음
+    // PHPhotoLibrary 클래스를 사용하여 이미지를 내장된 사진 라이브러리에 저장.
+    @IBAction func captureImage(_ sender: UIButton) {
+        cameraController.captureImage {(image, error) in
+            guard let image = image else {
+                print(error ?? "Image capture error")
+                return
+            }
+            
+            try? PHPhotoLibrary.shared().performChangesAndWait {
+                PHAssetChangeRequest.creationRequestForAsset(from: image)
+            }
         }
     }
 }
